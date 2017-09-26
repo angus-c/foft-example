@@ -6,33 +6,31 @@
     <style>
       @font-face {
         font-family: 'InconsolataBasic';
-        src: url('./_static/inconsolata-basic-latin.woff2') format('woff2');
+        src: url('static/inconsolata-basic-latin.woff2') format('woff2');
         font-weight: normal;
         font-style: normal;
       }
       @font-face {
         font-family: 'Inconsolata';
-        src: url('./_static/inconsolata.woff2') format('woff2');
+        src: url('static/inconsolata.woff2') format('woff2');
       }
     </style>
-    <link rel="preload" href="./_static/inconsolata-basic-latin.woff2" as="font" type="font/woff2">
+    <link rel="preload" href="static/inconsolata-basic-latin.woff2" as="font" type="font/woff2">
     <script>
       if (document && 'fonts' in document) {
-        document.fonts.load('12px Inconsolata');
-        document.fonts.ready.then(fontFaceSet => {
-          document.querySelector('#container').style.fontFamily="Inconsolata";
-        });
+        setTimeout(() => {
+          document.fonts.load('12px Inconsolata');
+          document.fonts.ready.then(fontFaceSet => {
+            document.querySelector('#container').style.fontFamily="Inconsolata";
+          })
+        }, 2000);
       }
     </script>
 </head>
   <body>
     <div id="container" style="font-family:InconsolataBasic">
       <p>
-          This preloads critical font and uses a font loader to
-          <strong>
-            lazily load styled
-            fonts
-          </strong>.
+          This preloads critical font and uses a font loader to <strong>lazily load styled fonts</strong>.
           Browser will <em>synthesize</em> styled fonts while waiting for lazy
           load.
         </p>
